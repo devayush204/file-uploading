@@ -1,9 +1,27 @@
+import GlobalApi from '@/app/utils/GlobalApi';
+import { useUser } from '@clerk/nextjs';
 import { Copy } from 'lucide-react';
 import React, { useState } from 'react'
 
 const FileShareForm = ({file, onPassSave}) => {
     const [isPassEnable, setIsPassEnable] = useState(false);
     const [password, setPassord] = useState('');
+    const [email, setEmail] = useState();
+    const {user}= useUser();
+
+    const SendEmail=()=>{
+        const data = {
+            emailToSend:email,
+            userName:user?.fullName,
+            fileName:file?.fileName,
+            fileSize:file?.fileSize,
+            fileType:file?.fileType,
+            shortUrl:file?.ShortUrl
+        }
+        GlobalApi.SendEmail(data).then(resp=>{
+            console.log(resp);
+        })
+    }
   return  file&&(
     <div className='flex flex-col gap-2'>
         <div>
@@ -21,7 +39,7 @@ const FileShareForm = ({file, onPassSave}) => {
         {isPassEnable?
             <div className='flex gap-3 items-center'>
                 <div className='border rounded-md w-full p-2'>
-                    <input type="password" className='disabled:text-gray-500 bg-transparent outline-none '
+                    <input defaultValue={file.password} type="password" className='disabled:text-gray-500 bg-transparent outline-none '
                     onChange={(e)=> setPassord(e.target.value)} />
                 </div>
                 <button className='p-2 bg-primary text-white rounded-md disabled:bg-gray-500 hover:bg-primary'
@@ -35,9 +53,9 @@ const FileShareForm = ({file, onPassSave}) => {
     <div className='flex flex-col gap-3 border px-3 py-4 rounded-md'>
         <div className='flex flex-col text-gray-500'>
             <label className='text-[13px]'>Send file to Email</label>
-            <input className='w-full p-2 border rounded-md ' type="text" placeholder='YourEmail@gmail.com' />
+            <input onChange={(e)=> setEmail(e.target.value)} className='w-full p-2 border rounded-md ' type="text" placeholder='YourEmail@gmail.com' />
         </div>
-        <button className='text-white w-full bg-primary text-center p-2 rounded-md'>Send Email</button>
+        <button onClick={()=> SendEmail()} className='text-white w-full bg-primary text-center p-2 rounded-md'>Send Email</button>
     </div>
     </div>
   )
