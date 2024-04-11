@@ -1,7 +1,8 @@
-import GlobalApi from '@/app/utils/GlobalApi';
+
 import { useUser } from '@clerk/nextjs';
 import { Copy } from 'lucide-react';
 import React, { useState } from 'react'
+import GlobalApi from '../../../../../utils/GlobalApi';
 
 const FileShareForm = ({file, onPassSave}) => {
     const [isPassEnable, setIsPassEnable] = useState(false);

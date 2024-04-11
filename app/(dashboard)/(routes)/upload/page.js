@@ -1,11 +1,11 @@
 "use client"
 import React, { useState } from 'react'
 import UploadForm from './_components/UploadForm'
-import { app } from '@/firebaseConfig'
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage"
 import { doc, getFirestore, setDoc } from 'firebase/firestore'
 import { useUser } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
+import { app } from '../../../../firebaseConfig'
 
 const Upload = () => {
   const [progress, setProgress] = useState();

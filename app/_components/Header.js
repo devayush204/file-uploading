@@ -34,7 +34,7 @@ const Header = () => {
                         <div className="sm:flex sm:gap-4">
                             <a
                                 className="block rounded-md bg-gradient-to-r from-green-300 via-blue-500 to-purple-600  px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700"
-                                href="/files"
+                                href="/upload"
                             >
                                 Get Started
                             </a>
