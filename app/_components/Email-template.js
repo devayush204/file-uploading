@@ -14,7 +14,7 @@ import {
 
 
 export const EmailTemplate = ({
-    firstName,
+   
 }) => (
     <Html>
         <Head />
