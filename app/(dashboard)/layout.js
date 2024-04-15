@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import SideNav from './_components/SideNav'
 import TopHeader from './_components/TopHeader'
 
-const layout = ({ children }) => {
+const Layout = ({ children }) => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
     const toggleSidebar = () => {
@@ -22,4 +22,4 @@ const layout = ({ children }) => {
   )
 }
 
-export default layout
+export default Layout

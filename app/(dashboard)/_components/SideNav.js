@@ -35,7 +35,7 @@ const SideNav = () => {
 
             <div className='flex flex-col float-left w-full'>
                 {menuList.map((item, index) => (
-                    <Link href={item.path}>
+                    <Link key={index} href={item.path}>
                         <button className={`flex w-full text-gray-500 gap-3 p-4 px-6 hover:bg-gray-100 ${activeIndex == index ? 'bg-blue-50 text-primary' : null}`}
                             onClick={() => setActiveIndex(index)}>
                             <item.icon />
