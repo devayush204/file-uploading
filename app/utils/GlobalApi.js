@@ -1,7 +1,7 @@
-const { default: axios } = require("axios");
+// const { default: axios } = require("axios");
 
 
-const SendEmail = (data) => axios.post("/api/send", data)
+// const SendEmail = (data) => axios.post("/api/send", data)
 
 
-export default { SendEmail }
+// export default { SendEmail }
