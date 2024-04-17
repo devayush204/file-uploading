@@ -15,11 +15,11 @@ export async function POST(req) {
         });
 
         if (error) {
-            return { error }; // Adjust return statement
+            return new Response(JSON.stringify({ error }), { status: 500 }); // Adjust return statement
         }
 
-        return { data }; // Adjust return statement
+        return new Response(JSON.stringify({ data }), { status: 200 }); // Adjust return statement
     } catch (error) {
-        return { error }; // Adjust return statement
+        return new Response(JSON.stringify({ error }), { status: 500 }); // Adjust return statement
     }
 }
